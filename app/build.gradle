@@ -12,30 +12,49 @@ android {
         minSdk 24
         targetSdk 33
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
         debug {
-            storeFile file("../nogle.keystore")
+            storeFile file("./nogle.keystore")
             storePassword "abc123!!"
             keyAlias "key"
             keyPassword "abc123!!"
         }
         release {
-            storeFile file("../nogle.keystore")
+            storeFile file("./nogle.keystore")
             storePassword "abc123!!"
             keyAlias "key"
             keyPassword "abc123!!"
+        }
+        applicationVariants.all { variant ->
+            if (variant.buildType.name.equals("debug")) {
+                variant.outputs.all { output ->
+                    def fileName = "NogleTest-debug-$variant.versionName($variant.versionCode)"
+                    outputFileName = new File(fileName + ".apk")
+                }
+            }
+            if (variant.buildType.name.equals("release")) {
+                variant.outputs.all { output ->
+                    def fileName = "NogleTest-release-$variant.versionName($variant.versionCode)"
+                    outputFileName = new File(fileName + ".apk")
+                }
+            }
         }
     }
 
     buildTypes {
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
