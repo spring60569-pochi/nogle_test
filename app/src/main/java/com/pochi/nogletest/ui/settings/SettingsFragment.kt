@@ -5,10 +5,9 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
 import android.widget.TextView
-import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import com.pochi.nogletest.BaseFragment
 import com.pochi.nogletest.databinding.FragmentSettingsBinding
 
@@ -45,7 +44,7 @@ class SettingsFragment : BaseFragment() {
     override fun onContextItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                activity?.finish()
+                activity?.supportFragmentManager?.popBackStackImmediate();
                 return true
             }
         }

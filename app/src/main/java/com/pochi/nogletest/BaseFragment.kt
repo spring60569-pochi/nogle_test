@@ -2,6 +2,7 @@ package com.pochi.nogletest
 
 import android.os.Bundle
 import android.view.View
+import android.view.animation.Animation
 import androidx.fragment.app.Fragment
 
 abstract class BaseFragment : Fragment() {
