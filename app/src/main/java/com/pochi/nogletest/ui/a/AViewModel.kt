@@ -60,7 +60,7 @@ class AViewModel : ViewModel() {
             val dataObj = jsonObj.getJSONObject("data")
             //
             for (d in newSpotData!!) {
-                val key = d.name + "_1"
+                val key = "${d.name}_1"
                 if (dataObj.has(key)) {
                     val keyObj = dataObj.optJSONObject(key)
                     val price = keyObj!!.optString("price")
@@ -70,7 +70,7 @@ class AViewModel : ViewModel() {
             _spotData.value = newSpotData
 
             for (d in newFutureData!!) {
-                val key = d.name + "_1"
+                val key = "${d.name}_1"
                 if (dataObj.has(key)) {
                     val keyObj = dataObj.optJSONObject(key)
                     val price = keyObj!!.getString("price")
