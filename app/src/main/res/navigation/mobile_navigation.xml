@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_a">
+
+    <fragment
+        android:id="@+id/navigation_a"
+        android:name="com.pochi.nogletest.ui.a.AFragment"
+        android:label="@string/title_a"
+        tools:layout="@layout/fragment_a" />
+
+    <fragment
+        android:id="@+id/navigation_b"
+        android:name="com.pochi.nogletest.ui.b.BFragment"
+        android:label="@string/title_b"
+        tools:layout="@layout/fragment_b" />
+
+    <fragment
+        android:id="@+id/navigation_c"
+        android:name="com.pochi.nogletest.ui.c.CFragment"
+        android:label="@string/title_c"
+        tools:layout="@layout/fragment_c" />
+
+    <fragment
+        android:id="@+id/navigation_d"
+        android:name="com.pochi.nogletest.ui.d.DFragment"
+        android:label="@string/title_d"
+        tools:layout="@layout/fragment_d" >
+        <action
+            android:id="@+id/action_navigation_d_to_navigation_settings"
+            app:destination="@id/navigation_settings" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.pochi.nogletest.ui.settings.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_settings" >
+    </fragment>
+</navigation>

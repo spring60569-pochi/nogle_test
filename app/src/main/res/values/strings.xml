@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">NogleTest</string>
+    <string name="title_a">A</string>
+    <string name="title_b">B</string>
+    <string name="title_c">C</string>
+    <string name="title_d">D</string>
+    <string name="title_settings">Settings</string>
+</resources>
