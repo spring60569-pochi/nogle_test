@@ -117,13 +117,11 @@ class AFragment : BaseFragment() {
     }
 
     private fun getPriceFromWebSocketServer() {
-        class Listener : OnPriceChangedListener {
+        wsServer.getPrice(object : OnPriceChangedListener {
             override fun onPriceChanged(priceStr: String) {
                 this@AFragment.activity?.runOnUiThread { aViewModel.setPrice(priceStr) }
             }
-        }
-
-        wsServer.getPrice(Listener())
+        })
     }
 
     override fun onDestroyView() {
