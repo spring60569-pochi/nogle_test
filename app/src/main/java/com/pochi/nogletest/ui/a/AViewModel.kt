@@ -14,7 +14,6 @@ class AViewModel : ViewModel() {
     )
 
     companion object {
-        private lateinit var _aFragment: AFragment
 
         private val _spotData = MediatorLiveData<ArrayList<Data>>().apply {
             value = ArrayList()
@@ -22,10 +21,6 @@ class AViewModel : ViewModel() {
         private val _futureData = MediatorLiveData<ArrayList<Data>>().apply {
             value = ArrayList()
         }
-    }
-
-    fun setAFragment(aFragment: AFragment) {
-        _aFragment = aFragment
     }
 
     fun setData(data: List<Map<String, Any>>) {

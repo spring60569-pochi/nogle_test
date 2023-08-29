@@ -41,7 +41,6 @@ class AFragment : BaseFragment() {
     ): View {
         aViewModel =
             ViewModelProvider(this).get(AViewModel::class.java)
-        aViewModel.setAFragment(this)
 
         _binding = FragmentABinding.inflate(inflater, container, false)
         val root: View = binding.root
