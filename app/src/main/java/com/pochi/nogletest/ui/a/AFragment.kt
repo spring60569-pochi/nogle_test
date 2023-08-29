@@ -41,7 +41,6 @@ class AFragment : BaseFragment() {
     ): View {
         aViewModel =
             ViewModelProvider(this).get(AViewModel::class.java)
-        aViewModel.setAFragment(this)
 
         _binding = FragmentABinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -118,13 +117,11 @@ class AFragment : BaseFragment() {
     }
 
     private fun getPriceFromWebSocketServer() {
-        class Listener : OnPriceChangedListener {
+        wsServer.getPrice(object : OnPriceChangedListener {
             override fun onPriceChanged(priceStr: String) {
                 this@AFragment.activity?.runOnUiThread { aViewModel.setPrice(priceStr) }
             }
-        }
-
-        wsServer.getPrice(Listener())
+        })
     }
 
     override fun onDestroyView() {

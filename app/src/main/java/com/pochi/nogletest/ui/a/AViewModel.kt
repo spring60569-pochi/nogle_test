@@ -14,7 +14,6 @@ class AViewModel : ViewModel() {
     )
 
     companion object {
-        private lateinit var _aFragment: AFragment
 
         private val _spotData = MediatorLiveData<ArrayList<Data>>().apply {
             value = ArrayList()
@@ -22,10 +21,6 @@ class AViewModel : ViewModel() {
         private val _futureData = MediatorLiveData<ArrayList<Data>>().apply {
             value = ArrayList()
         }
-    }
-
-    fun setAFragment(aFragment: AFragment) {
-        _aFragment = aFragment
     }
 
     fun setData(data: List<Map<String, Any>>) {
@@ -60,7 +55,7 @@ class AViewModel : ViewModel() {
             val dataObj = jsonObj.getJSONObject("data")
             //
             for (d in newSpotData!!) {
-                val key = d.name + "_1"
+                val key = "${d.name}_1"
                 if (dataObj.has(key)) {
                     val keyObj = dataObj.optJSONObject(key)
                     val price = keyObj!!.optString("price")
@@ -70,7 +65,7 @@ class AViewModel : ViewModel() {
             _spotData.value = newSpotData
 
             for (d in newFutureData!!) {
-                val key = d.name + "_1"
+                val key = "${d.name}_1"
                 if (dataObj.has(key)) {
                     val keyObj = dataObj.optJSONObject(key)
                     val price = keyObj!!.getString("price")
